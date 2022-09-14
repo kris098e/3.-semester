@@ -1,8 +1,6 @@
 import java.net.*;
 import java.util.Scanner;
 
-import javax.swing.SortingFocusTraversalPolicy;
-
 public class SocketClient {
     public static void main(String[] args) {
         try {
