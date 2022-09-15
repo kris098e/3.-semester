@@ -1,4 +1,6 @@
 import java.net.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 
 public class ServerSocket {
@@ -13,7 +15,8 @@ public class ServerSocket {
             socket.receive(packet); // blocks until packet is received
 
             String payload = new String(packet.getData(), 0, packet.getLength());
-            String responsePayLoad = payload.toUpperCase();
+            String responsePayLoad = payload.equals("TIME") ? LocalTime.now().toString() : 
+                                    payload.equals("DATE") ? LocalDate.now().toString() : "ERROR";
 
             InetAddress adress = packet.getAddress(); // gets the address of the receiving packet
             int port = packet.getPort(); // get client port
